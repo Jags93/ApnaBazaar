@@ -80,6 +80,7 @@ namespace ApnaBazaar.Controllers
             _context.Update(articolo); // aggiorno l'articolo nel database
             _context.SaveChanges(); // salvo le modifiche nel database
             SaveCartItems(HttpContext.Session); // salvo gli articoli nel carrello nella sessione
+            TempData["Success"] = "Articolo aggiunto al carrello!"; // messaggio di successo
             return RedirectToAction("Index", "Articoli"); // reindirizzo alla pagina degli articoli
         }
 
@@ -108,6 +109,7 @@ namespace ApnaBazaar.Controllers
                 }
             }
             SaveCartItems(HttpContext.Session); // salvo gli articoli nel carrello nella sessione
+            TempData["Message"] = "Articolo rimosso dal carrello!"; // messaggio di successo
             return RedirectToAction("Index"); // reindirizzo alla pagina del carrello
         }
        
@@ -175,7 +177,7 @@ namespace ApnaBazaar.Controllers
 
         }
 
-        // 
+        
 
         
 
@@ -212,6 +214,8 @@ namespace ApnaBazaar.Controllers
             _items.Clear(); // Svuota il carrello
             SaveCartItems(HttpContext.Session); // Salva gli articoli nel carrello nella sessione
 
+            TempData["Message"] = "Ordine effettuato con successo!"; // Messaggio di successo
+
             return RedirectToAction("Index", "Articoli"); // Reindirizza alla pagina degli articoli
         }
 
@@ -223,8 +227,24 @@ namespace ApnaBazaar.Controllers
         {
             _items.Clear(); // svuoto il carrello
             SaveCartItems(HttpContext.Session); // salvo gli articoli nel carrello nella sessione
+            TempData["Message"] = "Carrello svuotato!"; // messaggio di successo
             return RedirectToAction("Index"); // reindirizzo alla pagina del carrello
         }
+
+
+        [HttpGet]
+        public IActionResult CartSummary() // Metodo per visualizzare il riepilogo del carrello
+        { 
+            var cartSummary = _items.Select(i => new
+            {
+                i.Articolo.Nome,
+                i.Quantita,
+                Subtotal = i.Articolo.Prezzo * i.Quantita
+            }); // Seleziona gli articoli nel carrello
+
+            return Json(cartSummary); // Restituisci il riepilogo del carrello in formato JSON
+        }
+
     }
 }
 

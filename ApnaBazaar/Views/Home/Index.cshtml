@@ -1,67 +1,213 @@
-﻿@{
-    ViewData["Title"] = "Home";
-}
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storia e Cultura del Punjab</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/BoostWatch.css" />
+   
+       <style>
+        .carousel-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
 
-<div class="container" style="background-image: url('/images/background.jpg'); background-size: cover;">
-    <h1>Storia e Cultura del Punjab</h1>
+    <div class="header">
+        <h1>Storia e Cultura del Punjab</h1>
+    </div>
 
-    <h2>Introduzione al Punjab</h2>
-    <p>Il Punjab, la terra dei cinque fiumi, è una regione ricca di cultura, storia e tradizioni.</p>
+    <div class="introduction">
+        <p>Il Punjab, la terra dei cinque fiumi, è un luogo ricco di cultura, storia e tradizioni. Conosciuto per la sua ospitalità, il Punjab ha una storia antica e una ricca eredità culturale.</p>
+    </div>
+    <div class="history">
+        <h2>La Storia del Punjab</h2>
+        <div id="historyCarousel" class="carousel slide" data-ride="carousel" >
+            <div class="carousel-inner">
+                <div class="carousel-item active ">
+                    <img class="carousel-image" src="/img/sikhempire.jpg" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/unified.jpg" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/Farmer.jpg" alt="Image 3">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/vaisakhi.jpg" alt="Image 4">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#historyCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Precedente</span>
+            </a>
+            <a class="carousel-control-next" href="#historyCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Successivo</span>
+            </a>
+        </div>
+        <p>Era Antica: Il Punjab ha una storia antica che risale all'era indusiana. L'impero di Maharaja Ranjit Singh, noto come il Leone del Punjab, è un periodo significativo nella storia del Punjab.</p>
+        <p>Era Coloniale: L'impero britannico ha avuto un impatto significativo sul Punjab, culminato con la divisione dell'India nel 1947.</p>
+        <p>Era Moderna: Oggi, il Punjab è noto per il suo contributo all'economia e alla società indiana, con una forte presenza in settori come l'agricoltura, l'industria e i servizi.</p>
+       
+        <p>Il Punjab è anche conosciuto per il suo spirito imprenditoriale e la sua cultura vibrante, con festival come il Vaisakhi e il Lohri che celebrano la vita e la prosperità.</p>
+    </div>
 
-    <h2>La Storia del Punjab</h2>
 
-    <h3>Era Antica</h3>
-    <p>Breve descrizione dell'era indusiana e dell'impero di Maharaja Ranjit Singh.</p>
 
-    <h3>Era Coloniale</h3>
-    <p>Impatto dell'impero britannico e la divisione dell'India.</p>
 
-    <h3>Era Moderna</h3>
-    <p>Il Punjab oggi, il suo contributo all'economia e alla società indiana.</p>
+    <div class="culture">
+        <h2>Cultura e Tradizioni</h2>
+        <div id="cultureCarousel" class="carousel slide" data-ride="carousel" >
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="carousel-image" src="/img/bhangra.jpg" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/phulkari.jpg" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/saag.jpg" alt="Image 3">
+                </div>
+                <!-- Aggiungi altre immagini qui se necessario -->
+            </div>
+            <a class="carousel-control-prev" href="#cultureCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Precedente</span>
+            </a>
+            <a class="carousel-control-next" href="#cultureCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Successivo</span>
+            </a>
+        </div>
+        <p>Musica e Danza: Il Punjab è famoso per la sua musica e danza, con strumenti musicali come il Dhol e il Tumbi, e danze come il Bhangra e il Giddha.</p>
+        <p>Arte e Artigianato: Il ricamo Phulkari, la fabbricazione del Charpoy e altri mestieri tradizionali sono una parte importante della cultura del Punjab.</p>
+        <p>Cucina: La cucina del Punjab è famosa per i suoi piatti robusti e saporiti, come il makki di roti e il sarson da saag.</p>
+    </div>
 
-    <img src="@Url.Content("~/images/timeline.jpg")" alt="Timeline visiva del Punjab" />
+    <div class="significant-places">
+        <h2>Luoghi Significativi</h2>
+        <div id="placesCarousel" class="carousel slide" data-ride="carousel" >
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="carousel-image" src="/img/darbarsahib.jpg" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/Jallianwala.jpg" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/wagah.jpg" alt="Image 3">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/Anandpursahib.jpg" alt="Image 4">"
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#placesCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Precedente</span>
+            </a>
+            <a class="carousel-control-next" href="#placesCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Successivo</span>
+            </a>
+        </div>
+        <p>
+            Tempio d'Oro di Amritsar:
+            Il Tempio d'Oro, conosciuto anche come Harmandir Sahib, è il santuario più venerato del Sikhismo e si trova nella città di Amritsar, nel Punjab, India. Costruito nel XVI secolo, si erge maestoso al centro di un ampio lago sacro chiamato Amrit Sarovar, da cui la città prende il suo nome. L'architettura del tempio unisce elementi islamici, indù e europei, creando un esemplare unico di interculturalità. La sua caratteristica distintiva è la sublime cupola dorata, che simboleggia la ricchezza spirituale e la luce interiore che il Sikhismo cerca di coltivare. Aperto a tutti, indipendentemente dalla fede, dal genere o dalla provenienza, il Tempio d'Oro è un simbolo di fratellanza e uguaglianza, aspetti fondamentali della filosofia sikh. L'atmosfera qui è sempre impregnata di devozione e serenità, con i continui canti dei versi sacri del Guru Granth Sahib che creano un senso di pace e spiritualità pervasiva. Il Langar, una mensa comunitaria che serve pasti gratuiti a migliaia di persone ogni giorno, esemplifica lo spirito di servizio e di comunità che è centrale per il Sikhismo..
+        </p>
+        <p>
+            Jallianwala Bagh di Amritsar: Jallianwala Bagh è un sito storico noto per essere stato teatro di un tragico massacro durante il periodo coloniale britannico. Il 13 aprile 1919, truppe britanniche aprirono il fuoco su una folla inerme di uomini, donne e bambini senza via di fuga, che si erano riuniti per una manifestazione pacifica, causando centinaia di morti e ancora più feriti. Questo evento fu un punto di svolta nella lotta per l'indipendenza indiana. Oggi, Jallianwala Bagh funge da memoriale per ricordare coloro che hanno perso la vita in questo atto di violenza senza senso e simboleggia la lotta per la libertà e la giustizia. Il giardino, che contiene ancora le pareti crivellate di proiettile e il pozzo in cui molte persone hanno cercato rifugio, è un potente promemoria della brutalità del dominio coloniale e un monumento all'indomabile spirito di resistenza del popolo indiano.
+        </p>
+        <p>
+            Wagah Border: Il confine tra l'India e il Pakistan a Wagah è famoso per la cerimonia di abbassamento della bandiera che si tiene ogni sera. Questo spettacolo di sincronizzazione e coreografia militare è un'occasione per celebrare l'indipendenza e la fratellanza tra i due paesi, nonostante le tensioni politiche e storiche che li dividono. La cerimonia è caratterizzata da una serie di movimenti elaborati e coreografie, accompagnati da canti patriottici e grida di incoraggiamento da parte del pubblico. La spettacolarità e l'entusiasmo di questo evento sono un tributo alla determinazione e alla resilienza del popolo indiano e pakistano, che nonostante le divisioni e le differenze, continuano a cercare la pace e la cooperazione.
+        </p>
+        <p>
+            Anandpur Sahib:
+            Anandpur Sahib è una città fondamentale del Sikhismo, nota per essere il sito dove il Guru Gobind Singh fondò il Khalsa nel 1699. Questa città storica è un centro di spiritualità e pellegrinaggio, celebrata per la sua architettura sacra e la forte eredità culturale che riflette i principi di coraggio e fede del Sikhismo.
+        </p>
+    </div>
+   
+    <div class="notable-people">
+        <h2>Persone Illustri del Punjab</h2>
+        <div id="peopleCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="carousel-image" src="/img/maharaja.jpg" alt="Maharaja Ranjit Singh">
+                    
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/santji.jpg" alt="Sant Baba Jarnail Singh Ji Khalsa Bhindranwale">
+                    
+                </div>
+                
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/bhagat.jpeg" alt="Bhagat Singh">
+                    
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/milkha.jpg" alt="Milkha Singh">
+                    
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/MANMOHAN.jpg" alt="Dr. Manmohan Singh">
+                   
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/amrita.jpg" alt="Amrita Pritam">
+                   
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/bhaivirsingh.jpg" alt="Bhai Vir Singh">
+                    
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel-image" src="/img/shivkumar.jpg" alt="Shiv Kumar Batalvi">
+                   
+                </div>
+               
+                
+            </div>
+            <a class="carousel-control-prev" href="#peopleCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Precedente</span>
+            </a>
+            <a class="carousel-control-next" href="#peopleCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Successivo</span>
+            </a>
+        </div>
+        <ul>
+            <li>Maharaja Ranjit Singh - Fondatore dell'Impero Sikh nel XIX secolo.</li>
+            <li>Sant Baba Jarnail Singh Ji Khalsa Bhindranwale - Leader religioso e politico sikh, noto per il suo ruolo nel movimento per i diritti dei Sikh negli anni '70 e '80.</li>
+            <li>Bhagat Singh - Rivoluzionario e icona della lotta per l'indipendenza indiana.</li>
+            <li>Milkha Singh - Atleta olimpico soprannominato "Il Sikhs Volante".</li>
+            
+            <li>Dr. Manmohan Singh - Economista e primo ministro dell'India dal 2004 al 2014.</li>
+            <li>Amrita Pritam - Poetessa e scrittrice, la prima donna a vincere il Sahitya Akademi Award.</li>
+            
+            
+            <li>Bhai Vir Singh - Poeta e scrittore, considerato il padre della poesia punjabi moderna.</li>
+           
+            <li>Shiv Kumar Batalvi - Poeta lirico punjabi, noto per il suo contributo alla poesia in lingua punjabi.</li>
+        </ul>
+    </div>
 
-    <h2>Cultura e Tradizioni</h2>
+    
 
-    <h3>Musica e Danza</h3>
-    <p>Presentazione di strumenti musicali come il Dhol e il Tumbi, con la menzione del Bhangra e del Giddha.</p>
+    
 
-    <h3>Arte e Artigianato</h3>
-    <p>Descrizione del ricamo Phulkari, la fabbricazione del Charpoy e altri mestieri tradizionali.</p>
+    
 
-    <h3>Cucina</h3>
-    <p>Panoramica dei piatti tipici come il makki di roti e il sarson da saag.</p>
+    
 
-    <img src="@Url.Content("~/images/cultura.jpg")" alt="Foto vivaci che mostrano la cultura e i prodotti artigianali" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
 
-    <h2>Luoghi Significativi</h2>
-
-    <h3>Tempio d'Oro di Amritsar</h3>
-    <p>Informazioni sul luogo più sacro del Sikhismo.</p>
-
-    <h3>Fortezze e Palazzi</h3>
-    <p>Breve storia e significato di luoghi come il Qila Mubarak.</p>
-
-    <h3>Patrimonio UNESCO</h3>
-    <p>Siti come i giardini di Shalimar a Lahore.</p>
-
-    <img src="@Url.Content("~/images/luoghi.jpg")" alt="Galleria fotografica o un carosello di immagini di questi siti" />
-
-    <h2>Persone Illustri del Punjab</h2>
-    <p>Mini-biografie di personalità famose come Bhagat Singh, Milkha Singh, e leader spirituali.</p>
-
-    <img src="@Url.Content("~/images/persone.jpg")" alt="Ritratti o rappresentazioni artistiche" />
-
-    <h2>Phulkari: Un Tesoro Tessile</h2>
-    <p>Una sezione dedicata all'arte del Phulkari, con dettagli sulla sua storia, tecniche e importanza culturale.</p>
-
-    <img src="@Url.Content("~/images/phulkari.jpg")" alt="Close-up di vari stili di Phulkari" />
-
-    <h2>Testimonianze e Storie</h2>
-    <p>Raccolta di storie e citazioni da persone reali del Punjab, inclusi artigiani e artisti.</p>
-
-    <img src="@Url.Content("~/images/testimonianze.jpg")" alt="Fotografie dei contribuenti con le loro opere o in azione" />
-
-    <!-- Resto del codice -->
-</div>
 

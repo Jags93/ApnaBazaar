@@ -4,6 +4,7 @@ using ApnaBazaar.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApnaBazaar.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240424133302_wishlist")]
+    partial class wishlist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,49 +256,6 @@ namespace ApnaBazaar.Migrations
                     b.ToTable("Ordini");
                 });
 
-            modelBuilder.Entity("ApnaBazaar.Models.Wishlist", b =>
-                {
-                    b.Property<int>("IdW")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdW"));
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdW");
-
-                    b.ToTable("Wishlists");
-                });
-
-            modelBuilder.Entity("ApnaBazaar.Models.WishlistItem", b =>
-                {
-                    b.Property<int>("IdWi")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdWi"));
-
-                    b.Property<int>("ArticoloIdA")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdA")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WishlistIdW")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdWi");
-
-                    b.HasIndex("ArticoloIdA");
-
-                    b.HasIndex("WishlistIdW");
-
-                    b.ToTable("WishlistItem");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -448,21 +408,6 @@ namespace ApnaBazaar.Migrations
                     b.Navigation("Articolo");
                 });
 
-            modelBuilder.Entity("ApnaBazaar.Models.WishlistItem", b =>
-                {
-                    b.HasOne("ApnaBazaar.Models.Articolo", "Articolo")
-                        .WithMany()
-                        .HasForeignKey("ArticoloIdA")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ApnaBazaar.Models.Wishlist", null)
-                        .WithMany("Items")
-                        .HasForeignKey("WishlistIdW");
-
-                    b.Navigation("Articolo");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -515,11 +460,6 @@ namespace ApnaBazaar.Migrations
                 });
 
             modelBuilder.Entity("ApnaBazaar.Models.Carrello", b =>
-                {
-                    b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("ApnaBazaar.Models.Wishlist", b =>
                 {
                     b.Navigation("Items");
                 });

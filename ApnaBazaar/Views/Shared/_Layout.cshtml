@@ -4,11 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ApnaBazaar</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/BoostWatch.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="~/ApnaBazaar.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
 </head>
 <body >
     <!-- Preheader -->
@@ -33,7 +34,7 @@
         <div >
             <div class="d-flex justify-content-between align-items-center py-3">
                 <a class="navbar-brand pl-3" asp-area="" asp-controller="Home" asp-action="Index">
-                    <!-- Aggiungi padding a sinistra -->
+                   
                     <img src="~/img/logo.webp" alt="ApnaBazaar Logo" height="80" style="padding-left: 2rem">
                 </a>
                 <div class="mx-auto">
@@ -46,7 +47,9 @@
                 </div>
                 <div class="ms-auto pr-1">
                     <!-- Aggiungi padding a destra -->
-                    <a asp-controller="Carrello" asp-action="Index" class="text-dark"><i class="fas fa-shopping-cart"></i> <span class="badge badge-pill badge-danger">3</span></a>
+                    <a asp-controller="Carrello" asp-action="Index" class="text-dark"><i class="fas fa-shopping-cart" style="padding-right:2rem"></i> <span class="badge badge-pill badge-danger"></span></a>
+                    <a asp-controller="Wishlist" asp-action="Index" class="text-dark"><i class="fas fa-heart" style="padding-right:2rem"></i></a>
+
                 </div>
             </div>
         </div>
@@ -64,11 +67,9 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0 pl-3">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-book"></i>Cultura</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fas fa-user-shield"></i> Privacy</a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Articoli" asp-action="Index"><i class="fas fa-shopping-cart"></i> Articoli</a>
                     </li>
@@ -108,6 +109,23 @@
             @RenderBody()
         </main>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('#cart-icon').click(function () {
+                $.ajax({
+                    url: '/Carrello/CartSummary',
+                    type: 'GET',
+                    success: function (data) {
+                        var cartSummaryDiv = $('#cart-summary');
+                        cartSummaryDiv.empty();
+                        data.forEach(function (item) {
+                            cartSummaryDiv.append('<p>' + item.Nome + ' x ' + item.Quantita + ' = ' + item.Subtotal + '</p>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
     <!-- Modal -->
     <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -136,9 +154,9 @@
             &copy; 2024 - ApnaBazaar - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    
-   
-   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

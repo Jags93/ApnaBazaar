@@ -9,6 +9,7 @@
  
     bool isAdminOrVenditore = User.IsInRole("Admin") || User.IsInRole("Venditore");
 }
+<partial name="_Notification" />
 
 <h1>Articoli</h1>
 
@@ -59,7 +60,8 @@
                     <p class="card-text">@(item.Descrizione.Length > 100 ? item.Descrizione.Substring(0,100) + "..." : item.Descrizione)</p>
                     <p class="card-text">Prezzo: @item.Prezzo</p>
                     <p class="card-text">Quantità: @item.Quantita</p>
-                    <a asp-controller="Carrello" asp-action="AddToCart" asp-route-id="@item.IdA" class="btn btn-primary">Aggiungi al Carrello</a>
+                    <a asp-controller="Carrello" asp-action="AddToCart" asp-route-id="@item.IdA" class="btn btn-primary">Aggiungi al Carrello</a> <br />
+                    <a asp-controller="Wishlist" asp-action="Add" asp-route-id="@item.IdA" class="btn btn-primary">Aggiungi alla Wishlist</a> <br />
                     <a asp-action="Details" asp-route-id="@item.IdA" class="btn btn-primary">Dettagli</a>
                     
                    @if(isAdminOrVenditore)

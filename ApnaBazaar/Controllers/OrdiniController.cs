@@ -112,6 +112,7 @@ namespace ApnaBazaar.Controllers
 
                 _context.Users.Add(newUser); // aggiungo il nuovo utente al database
                 _context.SaveChanges(); // salvo i cambiamenti
+                TempData["Message"] = "Dati salvati con successo!"; // messaggio di successo
                 return RedirectToAction("ConfermaDatiSpedizioneSuccess", newUser); // reindirizzo alla pagina di checkout 
 
             }
@@ -129,28 +130,29 @@ namespace ApnaBazaar.Controllers
         }
 
         [HttpPost]
-        public IActionResult PagaConStripe(string stripeEmail, string stripeToken)
+        public IActionResult PagaConStripe(string stripeEmail, string stripeToken) // metodo per il pagamento con Stripe
         {
-            ViewData["PublishableKey"] = _configuration["Stripe:PublishableKey"];
-            var customers = new CustomerService();
-            var charges = new ChargeService();
+            ViewData["PublishableKey"] = _configuration["Stripe:PublishableKey"]; // recupero la chiave pubblica di Stripe
+            var customers = new CustomerService(); // creo un nuovo servizio per i clienti
+            var charges = new ChargeService(); // creo un nuovo servizio per i pagamenti
 
-            var customer = customers.Create(new CustomerCreateOptions
+            var customer = customers.Create(new CustomerCreateOptions // creo un nuovo cliente
             {
-                Email = stripeEmail,
-                Source = stripeToken
+                Email = stripeEmail, // email del cliente
+                Source = stripeToken // token di Stripe
             });
 
-            var charge = charges.Create(new ChargeCreateOptions
+            var charge = charges.Create(new ChargeCreateOptions // creo un nuovo pagamento
             {
-                Amount = 500, // Ad esempio, 500 centesimi = 5 euro
-                Description = "Test Payment",
-                Currency = "eur",
-                Customer = customer.Id
+                Amount = 500, // Ad esempio, 500 centesimi = 5 euro 
+                Description = "Test Payment", // descrizione del pagamento
+                Currency = "eur", 
+                Customer = customer.Id // ID del cliente
             });
 
             if (charge.Status == "succeeded")
             {
+
                 // Il pagamento è stato effettuato con successo, quindi qui puoi salvare l'ordine nel tuo database
                 // e fare altre operazioni come inviare una email di conferma, ecc.
                 return View("Success");
@@ -160,6 +162,7 @@ namespace ApnaBazaar.Controllers
                 // Il pagamento non è riuscito, quindi qui puoi gestire l'errore e mostrare un messaggio all'utente
                 return View("Failure");
             }
+            TempData["Message"] = "Pagamento effettuato con successo!";
         }
 
 

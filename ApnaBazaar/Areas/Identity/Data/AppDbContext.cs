@@ -39,6 +39,8 @@ public class AppDbContext : IdentityDbContext<AccountUser>
 
     public DbSet<AccountUser> AccountUser { get; set; }
 
+    public DbSet<Wishlist> Wishlists { get; set; }
+
 }
 public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<AccountUser>
 {

@@ -1,0 +1,13 @@
+﻿@model Wishlist
+
+<h2>La tua Wishlist</h2>
+
+<ul>
+    @foreach (var item in Model.Items)
+    {
+        <li>
+            @item.Articolo.Nome
+            <a asp-action="Remove" asp-route-itemId="@item.IdA">Rimuovi</a>
+        </li>
+    }
+</ul>
