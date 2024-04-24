@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ApnaBazaar</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="~/ApnaBazaar.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body >
+    <!-- Preheader -->
+    <div class="preheader bg-dark text-light py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span>Call us: +123 456 7890</span>
+                </div>
+                <div class="col-md-6 text-right">
+                    <span>Follow us: </span>
+                    <a href="#" class="text-light"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Header -->
+    <header class="top-header bg-white shadow-sm">
+        <div >
+            <div class="d-flex justify-content-between align-items-center py-3">
+                <a class="navbar-brand pl-3" asp-area="" asp-controller="Home" asp-action="Index">
+                    <!-- Aggiungi padding a sinistra -->
+                    <img src="~/img/logo.webp" alt="ApnaBazaar Logo" height="80" style="padding-left: 2rem">
+                </a>
+                <div class="mx-auto">
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Articoli" asp-action="Search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 500px;" name="query">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+
+                </div>
+                <div class="ms-auto pr-1">
+                    <!-- Aggiungi padding a destra -->
+                    <a asp-controller="Carrello" asp-action="Index" class="text-dark"><i class="fas fa-shopping-cart"></i> <span class="badge badge-pill badge-danger">3</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light pl-3 pr-3">
+        <!-- Aggiungi padding a sinistra e a destra -->
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0 pl-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fas fa-user-shield"></i> Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Articoli" asp-action="Index"><i class="fas fa-shopping-cart"></i> Articoli</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i> Account
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Profile">Profilo</a>
+                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <!-- Main Content -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            @RenderBody()
+        </main>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel">Dettagli Articolo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- I dettagli dell'articolo verranno inseriti qui dalla richiesta AJAX -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <!-- Footer -->
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - ApnaBazaar - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    
+   
+   
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

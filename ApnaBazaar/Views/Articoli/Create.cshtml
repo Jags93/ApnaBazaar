@@ -1,0 +1,79 @@
+﻿@model Articolo
+
+<form method="post" enctype="multipart/form-data">
+    
+    <div class="border p-2 mt-4">
+
+        <div class="row pb-2">
+
+            <h2 class="text-primary">Aggiungi un nuovo prodotto</h2>
+        </div>
+
+        <div asp-validation-summary="All"></div>
+
+        <div class="mb-3">
+
+            <label asp-for="Nome" class="form-label"></label>
+            <input asp-for="Nome" class="form-control" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label asp-for="Descrizione" class="form-label"></label>
+            <input asp-for="Descrizione" class="form-control" />
+            <span asp-validation-for="Descrizione" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Prezzo" class="form-label"></label>
+                <input asp-for="Prezzo" class="form-control" />
+                <span asp-validation-for="Prezzo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Quantita" class="form-label"></label>
+                <input asp-for="Quantita" class="form-control" />
+                <span asp-validation-for="Quantita" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ImmagineUpload1" class="form-label">Immagine 1</label>
+            <input asp-for="ImmagineUpload1" type="file" class="form-control" />
+            <span asp-validation-for="ImmagineUpload1" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImmagineUpload2" class="form-label">Immagine 1</label>
+            <input asp-for="ImmagineUpload2" type="file" class="form-control" />
+            <span asp-validation-for="ImmagineUpload2" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImmagineUpload3" class="form-label">Immagine 1</label>
+            <input asp-for="ImmagineUpload3" type="file" class="form-control" />
+            <span asp-validation-for="ImmagineUpload3" class="text-danger"></span>
+        </div>
+
+       
+        
+        <button type="submit" class="btn btn-primary" style="width:150px">Crea</button>
+        <a asp-controller="Articoli" asp-action="Index" class="btn btn-secondary" style="width:150px" >Back to List</a>
+
+
+
+        
+
+
+    </div>
+
+
+
+
+
+</form>
+
+    
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

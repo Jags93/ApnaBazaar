@@ -1,0 +1,76 @@
+﻿@model List<ApnaBazaar.Models.ItemCarrello>
+
+<h2>Carrello</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Message"]
+    </div>
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4">
+                <div class="card h-100">
+                    <div id="carouselExampleIndicators@item.Articolo.IdA" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100 img-fluid" src="@item.Articolo.Img1" alt="First slide" style="object-fit: cover; height: 200px;">
+                            </div>
+                            @if (!string.IsNullOrEmpty(item.Articolo.Img2))
+                            {
+                                <div class="carousel-item">
+                                    <img class="d-block w-100 img-fluid" src="@item.Articolo.Img2" alt="Second slide" style="object-fit: cover; height: 200px;">
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(item.Articolo.Img3))
+                            {
+                                <div class="carousel-item">
+                                    <img class="d-block w-100 img-fluid" src="@item.Articolo.Img3" alt="Third slide" style="object-fit: cover; height: 200px;">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Articolo.Nome</h5>
+                        <p class="card-text">@item.Articolo.Descrizione</p>
+                        <p class="card-text">Quantità: @item.Quantita</p>
+                        <p class="card-text">Prezzo: @item.Articolo.Prezzo</p>
+                        <form asp-action="RemoveFromCart" asp-controller="Carrello" method="post">
+                            <input type="hidden" name="id" value="@item.Articolo.IdA" />
+                            <input type="submit" value="Rimuovi" class="btn btn-primary" />
+                        </form>
+                        <br />
+                        <a asp-action="Details" asp-controller="Articoli" asp-route-id="@item.Articolo.IdA" class="btn btn-primary">Dettagli</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Totale carrello: @Model.Sum(i => i.Articolo.Prezzo * i.Quantita)</p>
+            <form asp-action="ClearCart" asp-controller="Carrello" method="post">
+                <input type="submit" value="Svuota carrello" class="btn btn-danger" />
+            </form>
+            <a asp-action="ConfermaDatiSpedizione" asp-controller="Ordini" class="btn btn-success">Procedi al checkout</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.carousel').carousel({
+                interval: 3000
+            });
+           
+        });
+
+    </script>
+}

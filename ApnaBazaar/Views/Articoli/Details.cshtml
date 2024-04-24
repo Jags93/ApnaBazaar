@@ -1,0 +1,12 @@
+﻿@model ApnaBazaar.Models.Articolo
+
+<h2>@Model.Nome</h2>
+
+<p>@Model.Descrizione</p>
+
+<p>Prezzo: @Model.Prezzo</p>
+
+<a asp-action="Index" asp-controller="Articoli" class="btn btn-primary" >Torna alla lista articoli</a>
+
+<a asp-controller="Carrello" asp-action="AddToCart" asp-route-id="@Model.IdA" class="btn btn-primary">Aggiungi al Carrello</a>
+

@@ -1,0 +1,20 @@
+﻿@model ApnaBazaar.Areas.Identity.Data.AccountUser
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Nome @Model.Cognome</h5>
+        <p class="card-text">
+            Indirizzo: @Model.Indirizzo<br />
+            Città: @Model.Citta<br />
+            CAP: @Model.CAP<br />
+            Provincia: @Model.Provincia<br />
+            Email: @Model.Email<br />
+            Cellulare: @Model.Cellulare<br />
+        </p>
+        <form method="post" action="@Url.Action("PagaConStripe", "Ordini")">
+            <input type="hidden" name="stripeEmail" value="@Model.Email" />
+            <input type="hidden" name="stripeToken" value="your-stripe-token" />
+            <button type="submit" class="btn btn-primary">Effettua il pagamento</button>
+        </form>
+    </div>
+</div>

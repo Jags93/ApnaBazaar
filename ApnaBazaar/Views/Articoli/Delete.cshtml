@@ -1,0 +1,55 @@
+﻿@model Articolo
+
+<form method="post" asp-action="Delete">
+    <input asp-for="IdA" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Elimina prodotto</h2>
+            <hr />
+
+        </div>
+
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Nome"></label>
+            <input asp-for="Nome" class="form-control" disabled  />
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="Descrizione"></label>
+            <input asp-for="Descrizione" class="form-control" disabled  />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Prezzo"></label>
+            <input asp-for="Prezzo" class="form-control" disabled  />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Quantita"></label>
+            <input asp-for="Quantita" class="form-control" disabled  />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Img1"></label>
+            <img src="~/
+            <input asp-for="Img1" class="form-control" disabled  />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Img2"></label>
+            <img src="~/
+            <input asp-for="Img2" class="form-control" disabled  />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Img3"></label>
+            <img src="~/
+            <input asp-for="Img3" class="form-control" disabled  />
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-danger" style="width:150px">Elimina</button>
+    <a asp-controller="Articoli" asp-action="Index" class="btn btn-primary" style="width:150px">Articoli</a>
+
+
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

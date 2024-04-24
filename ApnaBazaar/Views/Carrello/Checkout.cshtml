@@ -1,0 +1,37 @@
+﻿@using Stripe.BillingPortal
+@model List<ItemCarrello>
+
+<h2>Checkout</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Articolo.Nome</h5>
+                    <p class="card-text">Quantità: @item.Quantita</p>
+                    <p class="card-text">Prezzo: @(item.Articolo.Prezzo * item.Quantita)</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<h3>Totale: @Model.Sum(item => item.Articolo.Prezzo * item.Quantita)</h3>
+
+<form action="/Carrello/Checkout" method="post">
+    <input type="submit" value="Procedi al Checkout" class="btn btn-primary" />
+</form>
+
+<form action="/Ordini/PagaConStripe" method="post">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="@ViewBag.StripePublishableKey"
+            data-amount="@Model.Sum(item => item.Articolo.Prezzo * item.Quantita) * 100"
+            data-name="Esempio di negozio"
+            data-description="Acquisto di articoli"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto"
+            data-currency="eur">
+    </script>
+</form>
