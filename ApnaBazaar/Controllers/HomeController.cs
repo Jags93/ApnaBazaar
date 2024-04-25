@@ -26,7 +26,7 @@ namespace ApnaBazaar.Controllers
 
             return View();
         }
-
+        [AllowAnonymous]
         public IActionResult Welcome()
         {
             return View();

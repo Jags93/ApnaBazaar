@@ -42,8 +42,9 @@ namespace ApnaBazaar.Controllers
         // Metodo per visualizzare il carrello
         public IActionResult Index()
         {
-            return View(_items);
+            return View(_items); // restituisco la vista con gli articoli nel carrello
         }
+       
 
 
        
