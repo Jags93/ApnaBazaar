@@ -81,7 +81,8 @@ namespace ApnaBazaar.Controllers
             _context.SaveChanges(); // salvo le modifiche nel database
             SaveCartItems(HttpContext.Session); // salvo gli articoli nel carrello nella sessione
             TempData["Success"] = "Articolo aggiunto al carrello!"; // messaggio di successo
-            return RedirectToAction("Index", "Articoli"); // reindirizzo alla pagina degli articoli
+            
+           return RedirectToAction("Index", "Articoli"); // reindirizzo alla pagina degli articoli
         }
 
         
@@ -164,7 +165,7 @@ namespace ApnaBazaar.Controllers
         }
 
         [HttpPost]
-        public IActionResult Checkout(AccountUser user)
+        public IActionResult Checkout(AccountUser user, int idA)
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Ottieni l'ID dell'utente corrente
             if (userId == null) // Se l'ID dell'utente è nullo

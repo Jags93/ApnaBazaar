@@ -14,6 +14,7 @@
         <form method="post" action="@Url.Action("PagaConStripe", "Ordini")">
             <input type="hidden" name="stripeEmail" value="@Model.Email" />
             <input type="hidden" name="stripeToken" value="your-stripe-token" />
+           
             <button type="submit" class="btn btn-primary">Effettua il pagamento</button>
         </form>
     </div>

@@ -41,6 +41,12 @@ public class AppDbContext : IdentityDbContext<AccountUser>
 
     public DbSet<Wishlist> Wishlists { get; set; }
 
+    public DbSet<WishlistItem> WishlistItems { get; set; }
+
+    public DbSet<OrdineAticolo> OrdineAticolo { get; set; }
+
+
+
 }
 public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<AccountUser>
 {

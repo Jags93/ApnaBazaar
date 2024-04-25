@@ -28,11 +28,7 @@
         <div class="col-md-4 mb-2">
             <div class="card h-100">
                 <div id="carouselExampleIndicators@item.IdA" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators@item.IdA" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators@item.IdA" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators@item.IdA" data-slide-to="2"></li>
-                    </ol>
+                    
                     <div class="carousel-inner">
                         @if (!string.IsNullOrEmpty(item.Img1))
                         {
@@ -60,8 +56,12 @@
                     <p class="card-text">@(item.Descrizione.Length > 100 ? item.Descrizione.Substring(0,100) + "..." : item.Descrizione)</p>
                     <p class="card-text">Prezzo: @item.Prezzo</p>
                     <p class="card-text">Quantità: @item.Quantita</p>
-                    <a asp-controller="Carrello" asp-action="AddToCart" asp-route-id="@item.IdA" class="btn btn-primary">Aggiungi al Carrello</a> <br />
-                    <a asp-controller="Wishlist" asp-action="Add" asp-route-id="@item.IdA" class="btn btn-primary">Aggiungi alla Wishlist</a> <br />
+                     <a asp-controller="Carrello" asp-action="AddToCart" asp-route-id="@item.IdA" class="btn btn-primary">Aggiungi al Carrello</a> 
+                    
+
+                    <br />
+                    <a asp-controller="Wishlist" asp-action="Add" asp-route-id="@item.IdA" class="btn btn-primary">Aggiungi alla Wishlist</a> 
+                    <br />
                     <a asp-action="Details" asp-route-id="@item.IdA" class="btn btn-primary">Dettagli</a>
                     
                    @if(isAdminOrVenditore)
@@ -93,6 +93,26 @@
 
         });
 
+
+        $(".addToCart").click(function (e) {
+            e.preventDefault();
+            var id = $(this).data("id"); // ottieni l'ID dell'articolo dal pulsante
+
+            $.ajax({
+                url: "/Carrello/AddToCart", // l'URL del tuo metodo AddToCart
+                type: "POST", // il tipo di richiesta
+                data: { id: id }, // i dati da inviare al server
+                success: function (response) {
+                    if (response.success) {
+                        // l'articolo è stato aggiunto al carrello con successo
+                        // aggiorna la pagina o mostra un messaggio all'utente
+                    } else {
+                        // c'è stato un errore nell'aggiungere l'articolo al carrello
+                        // mostra un messaggio di errore all'utente
+                    }
+                }
+            });
+        });
        
     </script>
 }

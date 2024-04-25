@@ -58,7 +58,7 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light pl-3 pr-3">
-        <!-- Aggiungi padding a sinistra e a destra -->
+        
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,7 @@
                     </li>
                    
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Articoli" asp-action="Index"><i class="fas fa-shopping-cart"></i> Articoli</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Articoli" asp-action="Index"><i class="fas fa-shopping-cart"></i> Shop</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
@@ -83,7 +83,9 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Profile">Profilo</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Ordini" asp-action="Index"> Ordini</a>
                                 <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
                             </div>
                         </li>
                     }

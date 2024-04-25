@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ApnaBazaar.Models.Ordine>
+
+<h2>Elenco degli ordini</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.IdO)</th>
+            <th>@Html.DisplayNameFor(model => model.Stato)</th>
+            <th>@Html.DisplayNameFor(model=> model.Quantita)</th>
+            <th>@Html.DisplayNameFor(model => model.Prezzo)</th>
+            <th>@Html.DisplayNameFor(model => model.Data)</th>
+
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.IdO)</td>
+                <td>@Html.DisplayFor(modelItem => item.Stato)</td>
+                <td>@Html.DisplayFor(modelItem => item.Quantita)</td>
+                <td>@Html.DisplayFor(modelItem => item.Prezzo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Data)</td>
+
+                
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.IdO">Dettagli</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -4,6 +4,7 @@ using ApnaBazaar.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApnaBazaar.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240424173545_datetime")]
+    partial class datetime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,32 +256,6 @@ namespace ApnaBazaar.Migrations
                     b.ToTable("Ordini");
                 });
 
-            modelBuilder.Entity("ApnaBazaar.Models.OrdineAticolo", b =>
-                {
-                    b.Property<int>("IdOa")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdOa"));
-
-                    b.Property<int>("IdA")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdO")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantita")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdOa");
-
-                    b.HasIndex("IdA");
-
-                    b.HasIndex("IdO");
-
-                    b.ToTable("OrdineAticolo");
-                });
-
             modelBuilder.Entity("ApnaBazaar.Models.Wishlist", b =>
                 {
                     b.Property<int>("IdW")
@@ -319,7 +296,7 @@ namespace ApnaBazaar.Migrations
 
                     b.HasIndex("WishlistIdW");
 
-                    b.ToTable("WishlistItems");
+                    b.ToTable("WishlistItem");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -474,25 +451,6 @@ namespace ApnaBazaar.Migrations
                     b.Navigation("Articolo");
                 });
 
-            modelBuilder.Entity("ApnaBazaar.Models.OrdineAticolo", b =>
-                {
-                    b.HasOne("ApnaBazaar.Models.Articolo", "Articolo")
-                        .WithMany()
-                        .HasForeignKey("IdA")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ApnaBazaar.Models.Ordine", "Ordine")
-                        .WithMany("OrdineArticoli")
-                        .HasForeignKey("IdO")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Articolo");
-
-                    b.Navigation("Ordine");
-                });
-
             modelBuilder.Entity("ApnaBazaar.Models.WishlistItem", b =>
                 {
                     b.HasOne("ApnaBazaar.Models.Articolo", "Articolo")
@@ -562,11 +520,6 @@ namespace ApnaBazaar.Migrations
             modelBuilder.Entity("ApnaBazaar.Models.Carrello", b =>
                 {
                     b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("ApnaBazaar.Models.Ordine", b =>
-                {
-                    b.Navigation("OrdineArticoli");
                 });
 
             modelBuilder.Entity("ApnaBazaar.Models.Wishlist", b =>

@@ -26,6 +26,11 @@ namespace ApnaBazaar.Controllers
 
             return View();
         }
+
+        public IActionResult Welcome()
+        {
+            return View();
+        }
         [Authorize(Roles = "Admin")]
         public IActionResult Privacy()
         {

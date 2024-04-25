@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Identity.Client;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApnaBazaar.Models
@@ -12,8 +13,6 @@ namespace ApnaBazaar.Models
         [ForeignKey("AccountUser")]
         public string UserId{ get; set; }
 
-
-
         public int Quantita { get; set; }
 
         public decimal Prezzo { get; set; }
@@ -22,14 +21,13 @@ namespace ApnaBazaar.Models
 
         public string? Note { get; set; }
 
-        public DateTime Data { get; set; }
+        public DateTime Data { get; set; } = DateTime.Now;
         [NotMapped]
         public decimal Totale { get; set; }
 
+        public List<OrdineAticolo> OrdineArticoli { get; set; }
 
-
-
-
+       
 
     }
 
