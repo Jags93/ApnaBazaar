@@ -55,7 +55,11 @@
                     <h5 class="card-title">@item.Nome</h5>
                     <p class="card-text">@(item.Descrizione.Length > 100 ? item.Descrizione.Substring(0,100) + "..." : item.Descrizione)</p>
                     <p class="card-text">Prezzo: @item.Prezzo</p>
-                    <p class="card-text">Quantità: @item.Quantita</p>
+                    @if (isAdminOrVenditore)
+                    {
+                        <p class="card-text">Quantità: @item.Quantita</p>
+                    }
+                    
                      <a asp-controller="Carrello" asp-action="AddToCart" asp-route-id="@item.IdA" class="btn btn-primary">Aggiungi al Carrello</a> 
                     
 
