@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ApnaBazaar.Models.Ordine>
+
+<h2>All Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>User ID</th>
+            <th>Totale</th>
+            <th>Date</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.IdO</td>
+                <td>@order.UserId</td>
+                <td>@order.Totale</td>
+                <td>@order.Data</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -73,13 +73,18 @@ namespace ApnaBazaar.Controllers
             }
             return View(ordine); // mostro la vista con i dettagli dell'ordine
         }
-       
-      
 
-      
+        [Authorize(Roles = "Admin, Venditore")] // solo l'admin può vedere tutti gli ordini
+        public async Task<IActionResult> IndexAdmin()
+        {
+            return View(await _context.Ordini.ToListAsync());
+        }
 
 
-        
+
+
+
+
         public IActionResult ConfermaDatiSpedizione()
         {
             
@@ -212,6 +217,7 @@ namespace ApnaBazaar.Controllers
                 Quantita = model.Quantita
                 
             };
+            nuovoOrdine.Totale = model.Prezzo * model.Quantita; // Calcola il totale dell'ordine
 
             // Aggiungi l'ordine al database
             _context.Ordini.Add(nuovoOrdine);
